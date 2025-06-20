@@ -1,0 +1,36 @@
+name: taskmanager
+
+services:
+  postgres:
+    container_name: taskmanager-database
+    image: docker.io/postgres:16.9-alpine3.22
+    restart: unless-stopped
+    shm_size: 128mb
+    ports:
+      - "5432:5432"
+    networks:
+      - taskmanager
+    volumes:
+      - taskmanager-data:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 1G
+        reservations:
+          cpus: "0.5"
+          memory: 512M
+    environment:
+      POSTGRES_DB: taskmanager-database
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+volumes:
+  taskmanager-data:
+    name: taskmanager-data
+
+networks:
+  taskmanager:
+    name: taskmanager-network
+    driver: bridge
+    external: false
