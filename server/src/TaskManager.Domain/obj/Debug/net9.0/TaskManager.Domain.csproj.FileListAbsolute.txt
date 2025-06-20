@@ -1,0 +1,11 @@
+/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/bin/Debug/net9.0/TaskManager.Domain.deps.json
+/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/bin/Debug/net9.0/TaskManager.Domain.dll
+/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/bin/Debug/net9.0/TaskManager.Domain.pdb
+/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/obj/Debug/net9.0/TaskManager.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/obj/Debug/net9.0/TaskManager.Domain.AssemblyInfoInputs.cache
+/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/obj/Debug/net9.0/TaskManager.Domain.AssemblyInfo.cs
+/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/obj/Debug/net9.0/TaskManager.Domain.csproj.CoreCompileInputs.cache
+/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/obj/Debug/net9.0/TaskManager.Domain.dll
+/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/obj/Debug/net9.0/refint/TaskManager.Domain.dll
+/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/obj/Debug/net9.0/TaskManager.Domain.pdb
+/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/obj/Debug/net9.0/ref/TaskManager.Domain.dll

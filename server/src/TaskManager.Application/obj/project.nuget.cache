@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "3FmhOvjN1io=",
+  "success": true,
+  "projectFilePath": "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Application/TaskManager.Application.csproj",
+  "expectedPackageFiles": [
+    "/home/morgado/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.4/microsoft.aspnetcore.app.ref.9.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}
