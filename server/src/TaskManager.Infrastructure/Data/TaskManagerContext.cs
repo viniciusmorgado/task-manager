@@ -1,16 +1,14 @@
+#nullable disable
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TaskManager.Domain.Entities;
+using TaskEntity = TaskManager.Domain.Entities.Task;
 
 namespace TaskManager.Infrastructure.Data;
 
 public class TaskManagerContext(DbContextOptions options) : IdentityDbContext<AppUser>(options)
 {
-    // public DbSet<Product> Products { get; init; }
-    // public DbSet<Address> Addresses { get; set; }
-    // public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
-    // public DbSet<Order> Orders { get; set; }
-    // public DbSet<OrderItem> OrderItems { get; set; }
+    public DbSet<TaskEntity> Tasks { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
