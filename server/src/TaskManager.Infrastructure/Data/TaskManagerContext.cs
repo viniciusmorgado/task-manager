@@ -6,9 +6,10 @@ using TaskEntity = TaskManager.Domain.Entities.Task;
 
 namespace TaskManager.Infrastructure.Data;
 
-public class TaskManagerContext(DbContextOptions options) : IdentityDbContext<AppUser>(options)
+public class TaskManagerContext(DbContextOptions options) : IdentityDbContext<User>(options)
 {
     public DbSet<TaskEntity> Tasks { get; set; }
+    public DbSet<TaskHistory> TaskHistories { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

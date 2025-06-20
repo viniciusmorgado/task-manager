@@ -10,7 +10,7 @@ builder.Services.AddDbContext<TaskManagerContext>(opt =>
 });
 builder.Services.AddOpenApi();
 builder.Services.AddAuthorization();
-builder.Services.AddIdentityApiEndpoints<AppUser>()
+builder.Services.AddIdentityApiEndpoints<User>()
                 .AddEntityFrameworkStores<TaskManagerContext>();
 
 var app = builder.Build();
@@ -28,7 +28,7 @@ using (var scope = app.Services.CreateScope())
                 .LogError(ex, "An error occurred while migrating the database.");
     }
 }
-app.MapIdentityApi<AppUser>();
+app.MapIdentityApi<User>();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
