@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TaskEntity = TaskManager.Domain.Entities.Task;
 using TaskManager.Domain.Enumerators;
 using TaskManager.Domain.ValueObjects;
+using TaskEntity = TaskManager.Domain.Entities.Task;
 
 namespace TaskManager.Infrastructure.Mappings;
 

@@ -1,8 +1,8 @@
 using TaskManager.Domain.Enumerators;
 
-namespace TaskManager.Application.DTOs;
+namespace TaskManager.Application.DTOs.Tasks;
 
-public class TaskReadDto
+public class TaskReadDTO
 {
     public int Id { get; set; }
     public required string Title { get; set; }

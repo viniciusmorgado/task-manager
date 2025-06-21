@@ -20,13 +20,15 @@
           "net9.0"
         ],
         "sources": {
-          "/usr/lib64/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
+              "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Application/TaskManager.Application.csproj": {
+                "projectPath": "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Application/TaskManager.Application.csproj"
+              },
               "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/TaskManager.Domain.csproj": {
                 "projectPath": "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/TaskManager.Domain.csproj"
               },
@@ -46,12 +48,16 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[14.0.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.4, )"
@@ -86,7 +92,76 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/9.0.104/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/morgado/.dotnet-bin/dotnet-sdk-9.0.301-linux-x64/sdk/9.0.301/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Application/TaskManager.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Application/TaskManager.Application.csproj",
+        "projectName": "TaskManager.Application",
+        "projectPath": "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Application/TaskManager.Application.csproj",
+        "packagesPath": "/home/morgado/.nuget/packages/",
+        "outputPath": "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/morgado/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/TaskManager.Domain.csproj": {
+                "projectPath": "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/TaskManager.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[14.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/morgado/.dotnet-bin/dotnet-sdk-9.0.301-linux-x64/sdk/9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -106,7 +181,6 @@
           "net9.0"
         ],
         "sources": {
-          "/usr/lib64/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -125,7 +199,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -152,7 +226,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/9.0.104/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/morgado/.dotnet-bin/dotnet-sdk-9.0.301-linux-x64/sdk/9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -172,13 +246,15 @@
           "net9.0"
         ],
         "sources": {
-          "/usr/lib64/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
+              "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Application/TaskManager.Application.csproj": {
+                "projectPath": "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Application/TaskManager.Application.csproj"
+              },
               "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/TaskManager.Domain.csproj": {
                 "projectPath": "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/TaskManager.Domain.csproj"
               }
@@ -195,7 +271,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -226,7 +302,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/9.0.104/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/morgado/.dotnet-bin/dotnet-sdk-9.0.301-linux-x64/sdk/9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

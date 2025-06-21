@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     "net9.0": {
+      "AutoMapper/14.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Options": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -1026,6 +1042,20 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "TaskManager.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AutoMapper": "14.0.0",
+          "TaskManager.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TaskManager.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TaskManager.Application.dll": {}
+        }
+      },
       "TaskManager.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
@@ -1045,6 +1075,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.6",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
+          "TaskManager.Application": "1.0.0",
           "TaskManager.Domain": "1.0.0"
         },
         "compile": {
@@ -1057,6 +1088,21 @@
     }
   },
   "libraries": {
+    "AutoMapper/14.0.0": {
+      "sha512": "OC+1neAPM4oCCqQj3g2GJ2shziNNhOkxmNB9cVS8jtx4JbgmRzLcUOxB9Tsz6cVPHugdkHgCaCrTjjSI0Z5sCQ==",
+      "type": "package",
+      "path": "automapper/14.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "automapper.14.0.0.nupkg.sha512",
+        "automapper.nuspec",
+        "icon.png",
+        "lib/net8.0/AutoMapper.dll",
+        "lib/net8.0/AutoMapper.xml"
+      ]
+    },
     "Humanizer.Core/2.14.1": {
       "sha512": "lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "type": "package",
@@ -3038,6 +3084,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "TaskManager.Application/1.0.0": {
+      "type": "project",
+      "path": "../TaskManager.Application/TaskManager.Application.csproj",
+      "msbuildProject": "../TaskManager.Application/TaskManager.Application.csproj"
+    },
     "TaskManager.Domain/1.0.0": {
       "type": "project",
       "path": "../TaskManager.Domain/TaskManager.Domain.csproj",
@@ -3051,9 +3102,11 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "AutoMapper >= 14.0.0",
       "Microsoft.AspNetCore.OpenApi >= 9.0.4",
       "Microsoft.EntityFrameworkCore >= 9.0.6",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.6",
+      "TaskManager.Application >= 1.0.0",
       "TaskManager.Domain >= 1.0.0",
       "TaskManager.Infrastructure >= 1.0.0"
     ]
@@ -3077,13 +3130,15 @@
         "net9.0"
       ],
       "sources": {
-        "/usr/lib64/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
+            "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Application/TaskManager.Application.csproj": {
+              "projectPath": "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Application/TaskManager.Application.csproj"
+            },
             "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/TaskManager.Domain.csproj": {
               "projectPath": "/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Domain/TaskManager.Domain.csproj"
             },
@@ -3103,12 +3158,16 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
+          "AutoMapper": {
+            "target": "Package",
+            "version": "[14.0.0, )"
+          },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
             "version": "[9.0.4, )"
@@ -3143,7 +3202,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/9.0.104/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/morgado/.dotnet-bin/dotnet-sdk-9.0.301-linux-x64/sdk/9.0.301/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

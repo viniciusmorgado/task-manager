@@ -1,8 +1,10 @@
 /home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Infrastructure/bin/Debug/net9.0/TaskManager.Infrastructure.deps.json
 /home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Infrastructure/bin/Debug/net9.0/TaskManager.Infrastructure.dll
 /home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Infrastructure/bin/Debug/net9.0/TaskManager.Infrastructure.pdb
+/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Infrastructure/bin/Debug/net9.0/TaskManager.Application.dll
 /home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Infrastructure/bin/Debug/net9.0/TaskManager.Domain.dll
 /home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Infrastructure/bin/Debug/net9.0/TaskManager.Domain.pdb
+/home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Infrastructure/bin/Debug/net9.0/TaskManager.Application.pdb
 /home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Infrastructure/obj/Debug/net9.0/TaskManager.Infrastructure.csproj.AssemblyReference.cache
 /home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Infrastructure/obj/Debug/net9.0/TaskManager.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
 /home/morgado/Documents/Projects/TaskManager/server/src/TaskManager.Infrastructure/obj/Debug/net9.0/TaskManager.Infrastructure.AssemblyInfoInputs.cache

@@ -26,41 +26,31 @@ public class Task : BaseEntity
         CreatedAt = DateTime.UtcNow;
     }
 
-    public void UpdateTitle(Title newTitle, string updatedById)
+    public void UpdateTitle(Title newTitle)
     {
         if (newTitle == null) throw new ArgumentNullException(nameof(newTitle));
+        if (Title.Equals(newTitle)) return;
 
         Title = newTitle;
         UpdatedAt = DateTime.UtcNow;
-
-        AddHistory(Status, Status, $"Title updated", updatedById);
     }
 
-    public void UpdateDescription(Description newDescription, string updatedById)
+    public void UpdateDescription(Description newDescription)
     {
+        if (Description.Equals(newDescription)) return;
+
         Description = newDescription ?? new Description(string.Empty);
         UpdatedAt = DateTime.UtcNow;
-
-        AddHistory(Status, Status, "Description updated", updatedById);
     }
 
-    public void ChangeStatus(Status newStatus, string updatedById)
+    public void ChangeStatus(Status newStatus)
     {
         if (Status == newStatus) return;
 
-        var oldStatus = Status;
         Status = newStatus;
         UpdatedAt = DateTime.UtcNow;
 
         if (newStatus == Status.Concluded)
             CompletedAt = DateTime.UtcNow;
-
-        AddHistory(oldStatus, newStatus, $"Status changed from {oldStatus} to {newStatus}", updatedById);
-    }
-
-    private void AddHistory(Status previousStatus, Status currentStatus, string description, string updatedById)
-    {
-        var history = new TaskHistory(Id, previousStatus, currentStatus, description, updatedById);
-        TaskHistory.Add(history);
     }
 }

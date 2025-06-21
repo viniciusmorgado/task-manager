@@ -1,6 +1,6 @@
 using TaskManager.Domain.Enumerators;
 
-namespace TaskManager.Application.DTOs;
+namespace TaskManager.Application.DTOs.Tasks;
 
 public class TaskUpdateDTO
 {
