@@ -32,23 +32,23 @@ public class TaskService(
     private readonly ITaskDeleteRepository _deleteRepo = deleteRepo;
     private readonly IMapper _mapper = mapper;
 
-    public async Task<IEnumerable<TaskReadDto>> GetAllAsync(string? title, Status? status)
+    public async Task<IEnumerable<TaskReadDTO>> GetAllAsync(string? title, Status? status)
     {
         var tasks = await _getRepo.GetAllAsync(title, status);
-        return _mapper.Map<IEnumerable<TaskReadDto>>(tasks);
+        return _mapper.Map<IEnumerable<TaskReadDTO>>(tasks);
     }
 
-    public async Task<TaskReadDto?> GetByIdAsync(int id)
+    public async Task<TaskReadDTO?> GetByIdAsync(int id)
     {
         var task = await _getByIdRepo.GetByIdAsync(id);
-        return task == null ? null : _mapper.Map<TaskReadDto>(task);
+        return task == null ? null : _mapper.Map<TaskReadDTO>(task);
     }
 
-    public async Task<TaskReadDto> CreateAsync(TaskCreateDTO dto)
+    public async Task<TaskReadDTO> CreateAsync(TaskCreateDTO dto)
     {
         var entity = _mapper.Map<Task>(dto);
         await _postRepo.AddAsync(entity);
-        return _mapper.Map<TaskReadDto>(entity);
+        return _mapper.Map<TaskReadDTO>(entity);
     }
 
     public async Task<bool> UpdateAsync(int id, TaskUpdateDTO dto)

@@ -10,19 +10,17 @@ namespace TaskManager.API.Controllers;
 [Route("api/[controller]")]
 public class TasksController(ITaskService service) : ControllerBase
 {
-    private readonly ITaskService _service = service;
-
     [HttpGet]
     public async Task<IActionResult> Get([FromQuery] string? title, [FromQuery] Status? status)
     {
-        var tasks = await _service.GetAllAsync(title, status);
+        var tasks = await service.GetAllAsync(title, status);
         return Ok(tasks);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById(int id)
     {
-        var task = await _service.GetByIdAsync(id);
+        var task = await service.GetByIdAsync(id);
         if (task == null) return NotFound();
         return Ok(task);
     }
@@ -30,22 +28,22 @@ public class TasksController(ITaskService service) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] TaskCreateDTO dto)
     {
-        var created = await _service.CreateAsync(dto);
+        var created = await service.CreateAsync(dto);
         return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
     }
 
-    [HttpPatch("{id}")]
+    [HttpPatch("{id:int}")]
     public async Task<IActionResult> Patch(int id, [FromBody] TaskUpdateDTO dto)
     {
-        var updated = await _service.UpdateAsync(id, dto);
+        var updated = await service.UpdateAsync(id, dto);
         if (!updated) return NotFound();
         return NoContent();
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {
-        var deleted = await _service.DeleteAsync(id);
+        var deleted = await service.DeleteAsync(id);
         if (!deleted) return NotFound();
         return NoContent();
     }

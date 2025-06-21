@@ -8,7 +8,7 @@ namespace TaskManager.Infrastructure.Data.Repositories;
 
 public class TaskPatchRepository(TaskManagerContext context) : ITaskPatchRepository
 {
-    private async TaskHistory AddHistoryIfChanged(TaskEntity original, TaskEntity updated)
+    private async Task<TaskHistory> AddHistoryIfChanged(TaskEntity original, TaskEntity updated)
     {
         var histories = new List<TaskHistory>();
 
