@@ -2,7 +2,7 @@ using TaskManager.Domain.Enumerators;
 
 namespace TaskManager.Application.DTOs;
 
-public class TaskHistoryReadDto
+public class TaskHistoryReadDTO
 {
     public int Id { get; set; }
     public Status PreviousStatus { get; set; }

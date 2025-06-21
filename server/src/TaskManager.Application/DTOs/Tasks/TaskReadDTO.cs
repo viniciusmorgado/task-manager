@@ -11,5 +11,5 @@ public class TaskReadDto
     public DateTime CreatedAt { get; set; }
     public DateTime? CompletedAt { get; set; }
     public required string CreatedById { get; set; }
-    public List<TaskHistoryReadDto>? TaskHistory { get; set; }
+    public List<TaskHistoryReadDTO>? TaskHistory { get; set; }
 }
