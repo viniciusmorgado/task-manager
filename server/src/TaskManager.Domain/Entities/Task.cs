@@ -26,7 +26,7 @@ public class Task : BaseEntity
 
     public void UpdateTitle(Title newTitle)
     {
-        if (newTitle == null) throw new ArgumentNullException(nameof(newTitle));
+        ArgumentNullException.ThrowIfNull(newTitle);
         if (Title.Equals(newTitle)) return;
 
         Title = newTitle;

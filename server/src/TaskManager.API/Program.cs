@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 var origins = builder.Configuration.GetSection("CorsSettings:AllowedOrigins").Get<string[]>();
 
 if (origins == null || origins.Length == 0)
-    throw new InvalidOperationException("No CORS origins configured. Please set CorsSettings:AllowedOrigins in your configuration.");
+    throw new InvalidOperationException("No CORS origins configured. Please set CorsSettings:AllowedOrigins.");
 
 builder.Services.AddAutoMapper(typeof(TaskProfile).Assembly);
 builder.Services.AddDbContext<TaskManagerContext>(opt =>

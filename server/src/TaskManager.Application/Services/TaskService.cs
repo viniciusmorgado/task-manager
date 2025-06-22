@@ -1,20 +1,11 @@
 using AutoMapper;
 using TaskManager.Application.DTOs.Tasks;
 using TaskManager.Application.Interfaces;
-using TaskManager.Domain.Enumerators;
+using TaskManager.Application.Responses;
 using TaskManager.Domain.ValueObjects;
 using Task = TaskManager.Domain.Entities.Task;
 
 namespace TaskManager.Application.Services;
-
-public interface ITaskService
-{
-    Task<IEnumerable<TaskReadDto>> GetAllAsync(string? title, Status? status);
-    Task<TaskReadDto?> GetByIdAsync(int id);
-    Task<TaskReadDto> CreateAsync(TaskCreateDto dto);
-    Task<bool> UpdateAsync(int id, TaskUpdateDto dto);
-    Task<bool> DeleteAsync(int id);
-}
 
 public class TaskService(
     ITaskPostRepository postRepo,
@@ -25,12 +16,15 @@ public class TaskService(
     IMapper mapper) : ITaskService
 {
 
-    public async Task<IEnumerable<TaskReadDto>> GetAllAsync(string? title, Status? status)
+    public async Task<PaginationResponse<TaskReadDto>> GetAllPagedAsync(TaskQueryParamsDto queryParams)
     {
-        var tasks = await getRepo.GetAllAsync(title, status);
-        return mapper.Map<IEnumerable<TaskReadDto>>(tasks);
-    }
+        var totalCount = await getRepo.CountAsync(queryParams);
+        var tasks = await getRepo.GetAllPagedAsync(queryParams);
+        var data = mapper.Map<IReadOnlyList<TaskReadDto>>(tasks);
 
+        return new PaginationResponse<TaskReadDto>(queryParams.PageIndex, queryParams.PageSize, totalCount, data);
+    }
+    
     public async Task<TaskReadDto?> GetByIdAsync(int id)
     {
         var task = await getByIdRepo.GetByIdAsync(id);
@@ -53,7 +47,7 @@ public class TaskService(
         task.UpdateDescription(new Description(dto.Description ?? string.Empty));
         task.ChangeStatus(dto.Status);
 
-        await patchRepo.UpdateAsync(task, dto.UpdatedById);
+        if (dto.UpdatedById != null) await patchRepo.UpdateAsync(task, dto.UpdatedById);
         return true;
     }
 

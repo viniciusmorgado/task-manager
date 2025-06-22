@@ -6,7 +6,6 @@ public class ApiErrorResponse(int statusCode, string message, string? stackTrace
 {
     public string StatusCode { get; set; } = statusCode.ToString();
     public string Message { get; set; } = message;
-
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? StackTrace { get; set; } = stackTrace;
 }

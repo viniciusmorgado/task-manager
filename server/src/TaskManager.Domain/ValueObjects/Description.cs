@@ -7,7 +7,8 @@ public class Description
 
     public Description(string value)
     {
-        if (!string.IsNullOrWhiteSpace(value) && value.Length > 500) throw new ArgumentException("Description must be 500 characters or less.");
+        if (!string.IsNullOrWhiteSpace(value) && value.Length > 500) 
+            throw new ArgumentException("Description must be 500 characters or less.");
         Value = value?.Trim() ?? string.Empty;
     }
 

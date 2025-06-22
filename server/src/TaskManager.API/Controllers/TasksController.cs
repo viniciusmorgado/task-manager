@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.Application.DTOs.Tasks;
-using TaskManager.Application.Services;
-using TaskManager.Domain.Enumerators;
+using TaskManager.Application.Interfaces;
 
 namespace TaskManager.API.Controllers;
 
@@ -10,10 +9,13 @@ namespace TaskManager.API.Controllers;
 public class TasksController(ITaskService service) : ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> Get([FromQuery] string? title, [FromQuery] Status? status)
+    public async Task<IActionResult> Get([FromQuery] TaskQueryParamsDto query)
     {
-        var tasks = await service.GetAllAsync(title, status);
-        return Ok(tasks);
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        var pagedResult = await service.GetAllPagedAsync(query);
+        return Ok(pagedResult);
     }
 
     [HttpGet("{id:int}")]
