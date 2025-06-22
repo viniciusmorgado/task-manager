@@ -26,7 +26,7 @@ export const CreateTaskModal: React.FC<CreateTaskModalProps> = ({
     try {
       await createTask({
         ...form,
-        createdById: "944cc574-7936-4e3f-8b59-56c4af209d6f", // Default user ID
+        createdById: "944cc574-7936-4e3f-8b59-56c4af209d6f",
       });
       setForm({ title: "", description: "" });
       onClose();

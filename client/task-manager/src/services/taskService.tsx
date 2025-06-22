@@ -58,7 +58,18 @@ export class TaskService {
     });
 
     if (!response.ok) throw new Error("Failed to update task");
-    return response.json();
+
+    const text = await response.text();
+    if (!text) {
+      return { ...task, id } as Task;
+    }
+
+    try {
+      return JSON.parse(text);
+    } catch (error) {
+      console.error("Failed to parse JSON response:", text, error);
+      throw new Error("Invalid JSON response from server");
+    }
   }
 
   static async deleteTask(id: number): Promise<void> {
