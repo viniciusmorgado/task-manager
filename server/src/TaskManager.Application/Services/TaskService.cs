@@ -37,7 +37,7 @@ public class TaskService(
         await postRepo.AddAsync(entity);
         return mapper.Map<TaskReadDto>(entity);
     }
-
+    
     public async Task<bool> UpdateAsync(int id, TaskUpdateDto dto)
     {
         var task = await getByIdRepo.GetByIdAsync(id);
@@ -47,7 +47,7 @@ public class TaskService(
         task.UpdateDescription(new Description(dto.Description ?? string.Empty));
         task.ChangeStatus(dto.Status);
 
-        if (dto.UpdatedById != null) await patchRepo.UpdateAsync(task, dto.UpdatedById);
+        await patchRepo.UpdateAsync(task, dto.UpdatedById ?? string.Empty);
         return true;
     }
 
