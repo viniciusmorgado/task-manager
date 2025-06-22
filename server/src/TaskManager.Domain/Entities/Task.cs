@@ -9,12 +9,10 @@ public class Task : BaseEntity
     public Title Title { get; set; }
     public Description Description { get; set; }
     public Status Status { get; set; }
-    public string CreatedById { get; set; }
-    public User CreatedBy { get; set; }
+    public string CreatedById { get; init; }
+    public User CreatedBy { get; init; }
     public DateTime? CompletedAt { get; set; }
-
-    public ICollection<TaskHistory> TaskHistory { get; set; } = new List<TaskHistory>();
-
+    
     public Task() { }
 
     public Task(Title title, Description description, string createdById)

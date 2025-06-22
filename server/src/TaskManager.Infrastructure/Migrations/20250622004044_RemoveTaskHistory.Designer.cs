@@ -12,8 +12,8 @@ using TaskManager.Infrastructure.Data;
 namespace TaskManager.Infrastructure.Migrations
 {
     [DbContext(typeof(TaskManagerContext))]
-    [Migration("20250620225109_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20250622004044_RemoveTaskHistory")]
+    partial class RemoveTaskHistory
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -333,47 +333,6 @@ namespace TaskManager.Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("TaskManager.Domain.Entities.TaskHistory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("CurrentStatus")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(1000)
-                        .HasColumnType("character varying(1000)");
-
-                    b.Property<int>("PreviousStatus")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("TaskId")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("UpdatedById")
-                        .IsRequired()
-                        .HasMaxLength(450)
-                        .HasColumnType("character varying(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TaskId");
-
-                    b.HasIndex("UpdatedById");
-
-                    b.ToTable("TaskHistory", (string)null);
-                });
-
             modelBuilder.Entity("TaskManager.Domain.Entities.User", b =>
                 {
                     b.Property<string>("Id")
@@ -514,30 +473,6 @@ namespace TaskManager.Infrastructure.Migrations
                         .HasForeignKey("CreatedById");
 
                     b.Navigation("CreatedBy");
-                });
-
-            modelBuilder.Entity("TaskManager.Domain.Entities.TaskHistory", b =>
-                {
-                    b.HasOne("TaskManager.Domain.Entities.Task", "Task")
-                        .WithMany("TaskHistory")
-                        .HasForeignKey("TaskId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TaskManager.Domain.Entities.User", "UpdatedBy")
-                        .WithMany()
-                        .HasForeignKey("UpdatedById")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Task");
-
-                    b.Navigation("UpdatedBy");
-                });
-
-            modelBuilder.Entity("TaskManager.Domain.Entities.Task", b =>
-                {
-                    b.Navigation("TaskHistory");
                 });
 #pragma warning restore 612, 618
         }

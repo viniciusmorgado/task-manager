@@ -6,7 +6,7 @@ namespace TaskManager.API.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddTaskManagerServices(this IServiceCollection services)
+    public static void AddTaskManagerServices(this IServiceCollection services)
     {
         services.AddScoped<ITaskService, TaskService>();
 
@@ -15,7 +15,5 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ITaskGetRepository, TaskGetRepository>();
         services.AddScoped<ITaskGetByIdRepository, TaskGetByIdRepository>();
         services.AddScoped<ITaskDeleteRepository, TaskDeleteRepository>();
-
-        return services;
     }
 }

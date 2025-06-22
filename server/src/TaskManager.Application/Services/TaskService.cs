@@ -1,5 +1,4 @@
 using AutoMapper;
-using TaskManager.Application.DTOs;
 using TaskManager.Application.DTOs.Tasks;
 using TaskManager.Application.Interfaces;
 using TaskManager.Domain.Enumerators;
@@ -10,10 +9,10 @@ namespace TaskManager.Application.Services;
 
 public interface ITaskService
 {
-    Task<IEnumerable<TaskReadDTO>> GetAllAsync(string? title, Status? status);
-    Task<TaskReadDTO?> GetByIdAsync(int id);
-    Task<TaskReadDTO> CreateAsync(TaskCreateDTO dto);
-    Task<bool> UpdateAsync(int id, TaskUpdateDTO dto);
+    Task<IEnumerable<TaskReadDto>> GetAllAsync(string? title, Status? status);
+    Task<TaskReadDto?> GetByIdAsync(int id);
+    Task<TaskReadDto> CreateAsync(TaskCreateDto dto);
+    Task<bool> UpdateAsync(int id, TaskUpdateDto dto);
     Task<bool> DeleteAsync(int id);
 }
 
@@ -25,50 +24,44 @@ public class TaskService(
     ITaskDeleteRepository deleteRepo,
     IMapper mapper) : ITaskService
 {
-    private readonly ITaskPostRepository _postRepo = postRepo;
-    private readonly ITaskPatchRepository _patchRepo = patchRepo;
-    private readonly ITaskGetRepository _getRepo = getRepo;
-    private readonly ITaskGetByIdRepository _getByIdRepo = getByIdRepo;
-    private readonly ITaskDeleteRepository _deleteRepo = deleteRepo;
-    private readonly IMapper _mapper = mapper;
 
-    public async Task<IEnumerable<TaskReadDTO>> GetAllAsync(string? title, Status? status)
+    public async Task<IEnumerable<TaskReadDto>> GetAllAsync(string? title, Status? status)
     {
-        var tasks = await _getRepo.GetAllAsync(title, status);
-        return _mapper.Map<IEnumerable<TaskReadDTO>>(tasks);
+        var tasks = await getRepo.GetAllAsync(title, status);
+        return mapper.Map<IEnumerable<TaskReadDto>>(tasks);
     }
 
-    public async Task<TaskReadDTO?> GetByIdAsync(int id)
+    public async Task<TaskReadDto?> GetByIdAsync(int id)
     {
-        var task = await _getByIdRepo.GetByIdAsync(id);
-        return task == null ? null : _mapper.Map<TaskReadDTO>(task);
+        var task = await getByIdRepo.GetByIdAsync(id);
+        return task == null ? null : mapper.Map<TaskReadDto>(task);
     }
 
-    public async Task<TaskReadDTO> CreateAsync(TaskCreateDTO dto)
+    public async Task<TaskReadDto> CreateAsync(TaskCreateDto dto)
     {
-        var entity = _mapper.Map<Task>(dto);
-        await _postRepo.AddAsync(entity);
-        return _mapper.Map<TaskReadDTO>(entity);
+        var entity = mapper.Map<Task>(dto);
+        await postRepo.AddAsync(entity);
+        return mapper.Map<TaskReadDto>(entity);
     }
 
-    public async Task<bool> UpdateAsync(int id, TaskUpdateDTO dto)
+    public async Task<bool> UpdateAsync(int id, TaskUpdateDto dto)
     {
-        var task = await _getByIdRepo.GetByIdAsync(id);
+        var task = await getByIdRepo.GetByIdAsync(id);
         if (task == null) return false;
 
         task.UpdateTitle(new Title(dto.Title));
         task.UpdateDescription(new Description(dto.Description ?? string.Empty));
         task.ChangeStatus(dto.Status);
 
-        await _patchRepo.UpdateAsync(task, dto.UpdatedById);
+        await patchRepo.UpdateAsync(task, dto.UpdatedById);
         return true;
     }
 
     public async Task<bool> DeleteAsync(int id)
     {
-        var task = await _getByIdRepo.GetByIdAsync(id);
+        var task = await getByIdRepo.GetByIdAsync(id);
         if (task == null) return false;
-        await _deleteRepo.DeleteAsync(id);
+        await deleteRepo.DeleteAsync(id);
         return true;
     }
 }

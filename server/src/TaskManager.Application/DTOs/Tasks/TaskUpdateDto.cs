@@ -2,7 +2,7 @@ using TaskManager.Domain.Enumerators;
 
 namespace TaskManager.Application.DTOs.Tasks;
 
-public class TaskUpdateDTO
+public class TaskUpdateDto
 {
     public required string Title { get; set; }
     public string? Description { get; set; }

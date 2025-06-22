@@ -4,15 +4,11 @@ using TaskEntity = TaskManager.Domain.Entities.Task;
 
 namespace TaskManager.Infrastructure.Data.Repositories;
 
-public class TaskGetByIdRepository : ITaskGetByIdRepository
+public class TaskGetByIdRepository(TaskManagerContext context) : ITaskGetByIdRepository
 {
-    private readonly TaskManagerContext _context;
-    public TaskGetByIdRepository(TaskManagerContext context) => _context = context;
-
     public async Task<TaskEntity?> GetByIdAsync(int id)
     {
-        return await _context.Tasks
-            .Include(t => t.TaskHistory)
+        return await context.Tasks
             .FirstOrDefaultAsync(t => t.Id == id);
     }
 }

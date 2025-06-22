@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using TaskManager.Application.DTOs;
 using TaskManager.Application.DTOs.Tasks;
 using TaskManager.Application.Services;
 using TaskManager.Domain.Enumerators;
@@ -26,14 +25,14 @@ public class TasksController(ITaskService service) : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] TaskCreateDTO dto)
+    public async Task<IActionResult> Post([FromBody] TaskCreateDto dto)
     {
         var created = await service.CreateAsync(dto);
         return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
     }
 
     [HttpPatch("{id:int}")]
-    public async Task<IActionResult> Patch(int id, [FromBody] TaskUpdateDTO dto)
+    public async Task<IActionResult> Patch(int id, [FromBody] TaskUpdateDto dto)
     {
         var updated = await service.UpdateAsync(id, dto);
         if (!updated) return NotFound();

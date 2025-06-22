@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TaskManager.API.Extensions;
 using TaskManager.API.Middlewares;
+using TaskManager.Application.Mapping;
 using TaskManager.Domain.Entities;
 using TaskManager.Infrastructure.Data;
 
@@ -63,7 +64,7 @@ else
     app.UseCors("CorsPolicy");
 }
 app.UseAuthorization();
-app.UseMiddleware<ExceptionMiddleware>();
+app.UseMiddleware<ResponseMiddleware>();
 app.MapControllers();
 app.MapGroup("api").MapIdentityApi<User>();
 app.Run();
