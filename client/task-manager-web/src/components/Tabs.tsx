@@ -1,31 +1,36 @@
 import React from "react";
 
 interface Tab {
+  id: string;
   label: string;
-  value: string;
+  icon?: string;
 }
 
 interface TabsProps {
   tabs: Tab[];
   activeTab: string;
-  onTabChange: (value: string) => void;
+  onTabChange: (tabId: string) => void;
 }
 
-export const Tabs: React.FC<TabsProps> = ({ tabs, activeTab, onTabChange }) => (
-  <div className="flex border-b mb-4">
-    {tabs.map((tab) => (
-      <button
-        key={tab.value}
-        className={`px-4 py-2 font-semibold transition-colors ${
-          activeTab === tab.value
-            ? "border-b-2 border-blue-600 text-blue-600"
-            : "text-gray-600 hover:text-blue-600"
-        }`}
-        onClick={() => onTabChange(tab.value)}
-        type="button"
-      >
-        {tab.label}
-      </button>
-    ))}
-  </div>
-);
+export const Tabs: React.FC<TabsProps> = ({ tabs, activeTab, onTabChange }) => {
+  return (
+    <div className="flex justify-center">
+      <div className="flex bg-gray-100 rounded-lg p-1">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => onTabChange(tab.id)}
+            className={`flex items-center gap-2 px-6 py-3 rounded-md font-medium transition-all duration-200 ${
+              activeTab === tab.id
+                ? "bg-white text-blue-600 shadow-sm"
+                : "text-gray-600 hover:text-gray-800 hover:bg-gray-200"
+            }`}
+          >
+            {tab.icon && <span className="text-lg">{tab.icon}</span>}
+            {tab.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};

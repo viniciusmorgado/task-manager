@@ -1,20 +1,35 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 interface BadgeProps {
-  status: 1 | 2 | 3;
+  children: ReactNode;
+  color?: "yellow" | "blue" | "green" | "red" | "gray";
+  size?: "sm" | "md" | "lg";
 }
 
-const statusMap = {
-  1: { label: "Pendente", color: "bg-yellow-400 text-yellow-900" },
-  2: { label: "Em Progresso", color: "bg-blue-400 text-blue-900" },
-  3: { label: "Concluída", color: "bg-green-400 text-green-900" },
-};
+export const Badge: React.FC<BadgeProps> = ({
+  children,
+  color = "gray",
+  size = "sm",
+}) => {
+  const colorClasses = {
+    yellow: "bg-yellow-100 text-yellow-800 border-yellow-200",
+    blue: "bg-blue-100 text-blue-800 border-blue-200",
+    green: "bg-green-100 text-green-800 border-green-200",
+    red: "bg-red-100 text-red-800 border-red-200",
+    gray: "bg-gray-100 text-gray-800 border-gray-200",
+  };
 
-export const Badge: React.FC<BadgeProps> = ({ status }) => {
-  const { label, color } = statusMap[status];
+  const sizeClasses = {
+    sm: "px-2 py-1 text-xs",
+    md: "px-3 py-1 text-sm",
+    lg: "px-4 py-2 text-base",
+  };
+
   return (
-    <span className={`px-2 py-1 rounded text-xs font-semibold ${color}`}>
-      {label}
+    <span
+      className={`inline-flex items-center font-medium rounded-full border ${colorClasses[color]} ${sizeClasses[size]}`}
+    >
+      {children}
     </span>
   );
 };
