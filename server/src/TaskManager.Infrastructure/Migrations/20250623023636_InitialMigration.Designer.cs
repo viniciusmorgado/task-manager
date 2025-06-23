@@ -12,8 +12,8 @@ using TaskManager.Infrastructure.Data;
 namespace TaskManager.Infrastructure.Migrations
 {
     [DbContext(typeof(TaskManagerContext))]
-    [Migration("20250622004044_RemoveTaskHistory")]
-    partial class RemoveTaskHistory
+    [Migration("20250623023636_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -23,6 +23,12 @@ public class Task : BaseEntity
         CreatedById = createdById ?? throw new ArgumentNullException(nameof(createdById));
         CreatedAt = DateTime.UtcNow;
     }
+    
+    public Task(Title title, Description description, string createdById, DateTime createdAt)
+        : this(title, description, createdById)
+    {
+        CreatedAt = createdAt;
+    }
 
     public void UpdateTitle(Title newTitle)
     {
@@ -40,15 +46,20 @@ public class Task : BaseEntity
         Description = newDescription ?? new Description(string.Empty);
         UpdatedAt = DateTime.UtcNow;
     }
-
+    
     public void ChangeStatus(Status newStatus)
     {
         if (Status == newStatus) return;
 
+        if (newStatus == Status.Concluded)
+        {
+            if (DateTime.UtcNow < CreatedAt)
+                throw new InvalidOperationException("CompletedAt cannot be earlier than CreatedAt.");
+
+            CompletedAt = DateTime.UtcNow;
+        }
+
         Status = newStatus;
         UpdatedAt = DateTime.UtcNow;
-
-        if (newStatus == Status.Concluded)
-            CompletedAt = DateTime.UtcNow;
     }
 }
