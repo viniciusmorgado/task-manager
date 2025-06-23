@@ -14,10 +14,22 @@ export const KanbanBoard: React.FC<KanbanBoardProps> = ({ tasks }) => {
     return tasks.filter((task) => task.status === status);
   };
 
+  // const getColumnColor = (status: TaskStatus) => {
+  //   switch (status) {
+  //     case TaskStatus.TODO:
+  //       return "border-gray-300 bg-gray-50";
+  //     case TaskStatus.IN_PROGRESS:
+  //       return "border-blue-300 bg-blue-50";
+  //     case TaskStatus.COMPLETED:
+  //       return "border-green-300 bg-green-50";
+  //     default:
+  //       return "border-gray-300 bg-gray-50";
+  //   }
+  // };
   const getColumnColor = (status: TaskStatus) => {
     switch (status) {
       case TaskStatus.TODO:
-        return "border-gray-300 bg-gray-50";
+        return "border-orange-300 bg-orange-50";
       case TaskStatus.IN_PROGRESS:
         return "border-blue-300 bg-blue-50";
       case TaskStatus.COMPLETED:

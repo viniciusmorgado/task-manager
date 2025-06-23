@@ -147,7 +147,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
         {task.status !== TaskStatus.TODO && (
           <button
             onClick={() => handleStatusChange(TaskStatus.TODO)}
-            className="text-xs px-2 py-1 bg-gray-100 hover:bg-gray-200 rounded"
+            className="text-xs px-2 py-1 bg-orange-100 hover:bg-orange-200 text-orange-800 rounded"
           >
             → A Fazer
           </button>
