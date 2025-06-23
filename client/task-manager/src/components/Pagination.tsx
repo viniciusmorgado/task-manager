@@ -1,12 +1,10 @@
 "use client";
-
 import React from "react";
 import { useTaskContext } from "@/context/TaskContext";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export const Pagination: React.FC = () => {
   const { currentPage, pageSize, totalCount, setPage } = useTaskContext();
-
   const totalPages = Math.ceil(totalCount / pageSize);
 
   if (totalPages <= 1) return null;
